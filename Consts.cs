@@ -10,11 +10,23 @@ namespace RPG
         public static string heal;
         static Consts()
         {
-            alive = "alive".Pastel("#11E500");
-            dead = "dead".Pastel("#E50000");
-            attack = "attack".Pastel("c72705");
-            defend = "defend".Pastel("ffff00");
-            heal = "heal".Pastel("1bf325");
+            alive = "alive".Pastel(System.Drawing.Color.Lime);
+            dead = "dead".Pastel(System.Drawing.Color.Red);
+            attack = "attack".Pastel(System.Drawing.Color.Red);
+            defend = "defend".Pastel(System.Drawing.Color.Yellow);
+            heal = "heal".Pastel(System.Drawing.Color.Chartreuse);
+        }
+        public static System.Drawing.Color GetNameColor<T>(T target)
+        {
+            if (target is Player)
+            {
+                return System.Drawing.Color.Coral;
+            }
+            else if (target is Enemy)
+            {
+                return System.Drawing.Color.SlateBlue;
+            }
+            else return System.Drawing.Color.Magenta;
         }
     }
 }

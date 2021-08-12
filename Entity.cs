@@ -17,18 +17,25 @@ namespace RPG
         {
             get
             {
+                return currentHealth;
+            }
+            set
+            {
+                if (value > maxHealth)
+                {
+                    System.Console.WriteLine($"value is {value}, which is superior to {maxHealth}, clamping current health {currentHealth} to max {maxHealth}");
+                    currentHealth = maxHealth;
+                }
+                else
+                {
+                    System.Console.WriteLine($"value is {value}, which is less or equel to {maxHealth}, assigning value {value} to current health");
+                    currentHealth = value;
+                }
                 if (currentHealth <= 0)
                 {
                     isAlive = false;
                 }
-                if (currentHealth > maxHealth)
-                {
-                    currentHealth = maxHealth;
-                    Console.WriteLine("current health was above maxHealth, clamped it");
-                }
-                return currentHealth;
             }
-            set { currentHealth = value; }
         }
 
         public Entity()
@@ -39,11 +46,17 @@ namespace RPG
         public void Attack(Entity target, int dmgAmount)
         {
             target.CurrentHealth -= dmgAmount;
-            System.Console.WriteLine($"{name} attacked enemy {target.name} and inflicted {dmgAmount} amounts of damage.");
+            System.Console.WriteLine($"{name}".Pastel(Consts.GetNameColor(this)) + " attacked".Pastel(System.Drawing.Color.Red) + $" enemy {target.name.Pastel(Consts.GetNameColor(target))} and inflicted {dmgAmount.ToString().Pastel(System.Drawing.Color.Red)} amounts of damage.");
         }
         public void Heal(int amount)
         {
-            currentHealth += amount;
+            if (CurrentHealth + amount > maxHealth)
+            {
+                Console.WriteLine("Health was already at it's maximum !");
+                return;
+            }
+            CurrentHealth += amount;
+            System.Console.WriteLine($"You healed yourself and recovered {amount.ToString().Pastel(System.Drawing.Color.Chartreuse)} points of health !");
 
         }
     }

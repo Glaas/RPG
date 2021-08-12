@@ -11,7 +11,6 @@ namespace RPG
             CurrentHealth = maxHealth;
             isAlive = true;
             name = possibleNames[rnd.Next(0, possibleNames.Length)];
-            Console.WriteLine("Your opponent had entered the fight ! It's name is " + name);
         }
 
 
