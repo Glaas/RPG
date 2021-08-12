@@ -9,7 +9,7 @@ namespace RPG
         public string name = "Default name";
         public int maxHealth = 30;
         public bool isAlive = true;
-        public string[] possibleNames = { "Gary", "Barry", "Jerry", "Tommy" };
+        public string[] possibleNames = { "Gary", "Barry", "Jerry", "Tommy", "Henry", "Helvecy", "Lucy", "Aubrey", "Ivy" };
         Random rnd = new Random();
 
         private int currentHealth;
@@ -21,20 +21,11 @@ namespace RPG
             }
             set
             {
-                if (value > maxHealth)
-                {
-                    System.Console.WriteLine($"value is {value}, which is superior to {maxHealth}, clamping current health {currentHealth} to max {maxHealth}");
-                    currentHealth = maxHealth;
-                }
-                else
-                {
-                    System.Console.WriteLine($"value is {value}, which is less or equel to {maxHealth}, assigning value {value} to current health");
-                    currentHealth = value;
-                }
-                if (currentHealth <= 0)
-                {
-                    isAlive = false;
-                }
+                if (value > maxHealth) currentHealth = maxHealth;
+                else currentHealth = value;
+                
+                if (currentHealth <= 0) isAlive = false;
+
             }
         }
 
@@ -57,7 +48,6 @@ namespace RPG
             }
             CurrentHealth += amount;
             System.Console.WriteLine($"You healed yourself and recovered {amount.ToString().Pastel(System.Drawing.Color.Chartreuse)} points of health !");
-
         }
     }
 }

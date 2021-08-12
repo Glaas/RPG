@@ -7,6 +7,8 @@ namespace RPG
         public static string dead;
         public static string attack;
         public static string defend;
+        public static string inspect;
+
         public static string heal;
         static Consts()
         {
@@ -14,6 +16,7 @@ namespace RPG
             dead = "dead".Pastel(System.Drawing.Color.Red);
             attack = "attack".Pastel(System.Drawing.Color.Red);
             defend = "defend".Pastel(System.Drawing.Color.Yellow);
+            inspect = "inspect".Pastel(System.Drawing.Color.Yellow);
             heal = "heal".Pastel(System.Drawing.Color.Chartreuse);
         }
         public static System.Drawing.Color GetNameColor<T>(T target)

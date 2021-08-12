@@ -32,19 +32,14 @@ namespace RPG
                 switch (choice)
                 {
                     case "a":
-                        WriteLine("Pressed A");
                         myPlayer.Attack(opponent, rnd.Next(6, 10));
                         break;
                     case "b":
-                        WriteLine("Pressed B");
-                        break;
-                    case "c":
-                        WriteLine("Pressed C");
-                        myPlayer.Heal(rnd.Next(5, 10));
-                        break;
-                    case "init":
                         Init.StatsDisplay(myPlayer);
                         Init.StatsDisplay(opponent);
+                        break;
+                    case "c":
+                        myPlayer.Heal(rnd.Next(5, 10));
                         break;
                     default:
                         WriteLine("Not valid");
